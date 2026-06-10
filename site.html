@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutri Escola</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Mrs+Saint+Delafield&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg1: #EAF3DE;
+      --bg2: #C0DD97;
+      --dark: #173404;
+      --mid: #27500A;
+      --accent: #639922;
+      --light: #EAF3DE;
+      --card-bg: #27500A;
+      --btn-grad: linear-gradient(#3B6D11 0%, #173404 100%);
+      --text: #27500A;
+      --highlight: #639922;
+    }
+
+    html {
+      min-height: 100%;
+      background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+      background-attachment: fixed;
+    }
+
+    body {
+      font-family: "Lora", serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── HEADER ── */
+    .site-header {
+      text-align: center;
+      padding: 48px 20px 16px;
+    }
+
+    .site-header h1 {
+      font-family: "Mrs Saint Delafield", cursive;
+      font-size: clamp(52px, 12vw, 96px);
+      color: var(--dark);
+      text-shadow: 0 6px 28px var(--accent);
+      line-height: 1;
+    }
+
+    .site-header .tagline {
+      font-size: clamp(14px, 2.5vw, 18px);
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* ── NAV BUTTONS ── */
+    .nav-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 20px 16px 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 100px;
+      background: var(--btn-grad);
+      color: white;
+      font-family: "Lora", serif;
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover, .btn:focus-visible {
+      transform: scale(1.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      outline: none;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      text-align: center;
+      padding: 40px 20px 0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .intro .destaque {
+      font-size: clamp(18px, 3.5vw, 24px);
+      color: var(--highlight);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .intro ul {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .intro ul li {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--mid);
+      opacity: 0.85;
+    }
+
+    .intro ul li::before {
+      content: "🌿 ";
+    }
+
+    /* ── CARDS GRID ── */
+    .cards-section {
+      padding: 60px 20px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card individual */
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+
+    .card:hover, .card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .card-body {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-body h2 {
+      font-family: "Playwrite GB S", cursive;
+      font-size: clamp(13px, 2vw, 15px);
+      color: var(--bg2);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .card-body p {
+      font-size: clamp(13px, 1.8vw, 14px);
+      color: #cde8a8;
+      line-height: 1.7;
+      flex: 1;
+      text-align: left;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--bg2);
+      font-weight: 600;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .card:hover .card-link { opacity: 1; }
+
+    /* ── FORMULÁRIO ── */
+    .form-section {
+      text-align: center;
+      padding: 20px 20px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-section .form-title {
+      font-family: "Playwrite GB S", cursive;
+      font-size: clamp(14px, 2.5vw, 18px);
+      color: var(--dark);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .form-section .form-desc {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .qr-wrap {
+      display: inline-block;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .qr-wrap:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+    }
+
+    .qr-wrap img {
+      width: clamp(160px, 40vw, 220px);
+      height: auto;
+      display: block;
+    }
+
+    /* ── PALETA ── */
+    .paleta-section {
+      text-align: center;
+      padding: 10px 20px 80px;
+    }
+
+    .paleta-label {
+      font-size: 15px;
+      color: var(--mid);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .btn-mudar {
+      font-size: clamp(18px, 4vw, 26px);
+      padding: 18px 48px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 13px;
+      color: var(--mid);
+      border-top: 1px solid rgba(99,153,34,0.3);
+      opacity: 0.8;
+    }
+
+    /* ── RESPONSIVO MOBILE ── */
+    @media (max-width: 480px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <h1>Nutri Escola</h1>
+    <p class="tagline">Alimentação saudável que forma hábitos para a vida toda</p>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav-btns">
+    <a href="https://davikskk.github.io/TCC/index.html" class="btn">Saiba mais</a>
+    <a href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae" class="btn" target="_blank">PNAE</a>
+    <a href="https://www.embrapa.br/alimentacao-saudavel" class="btn" target="_blank">Embrapa</a>
+  </nav>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <span class="destaque">"Alimentar bem é plantar o futuro."</span>
+    <p>Inspire-se com nossas dicas e descubra como pequenas escolhas alimentares fazem grande diferença no aprendizado.</p>
+    <ul>
+      <li>"Colorido no prato, saúde no corpo."</li>
+      <li>"Frutas e verduras: o arco-íris da saúde."</li>
+      <li>"Comer bem é aprender melhor."</li>
+    </ul>
+  </section>
+
+  <!-- CARDS -->
+  <main class="cards-section">
+    <div class="cards-grid">
+
+      <a href="https://www.comerbemnaescola.org.br/" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i1.jpg" alt="Prato colorido">
+        </div>
+        <div class="card-body">
+          <h2>Prato Colorido</h2>
+          <p>Um prato saudável deve ter pelo menos três cores diferentes de frutas, legumes e verduras. Cada cor representa nutrientes essenciais: vermelho (licopeno), laranja (betacaroteno), verde (clorofila e ferro), roxo (antocianinas).</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://alimentandopoliticas.org.br/pautas/alimentacao-saudavel-nas-escolas/" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i2.jpg" alt="Frutas da estação">
+        </div>
+        <div class="card-body">
+          <h2>Frutas da Estação</h2>
+          <p>Consumir frutas da estação garante mais sabor, mais nutrientes e menor custo. No Brasil temos frutas o ano inteiro: manga, melancia, goiaba, banana, maracujá e muito mais.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://idec.org.br/colecaoescolassaudaveis" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i3.jpg" alt="Café da manhã">
+        </div>
+        <div class="card-body">
+          <h2>Café da Manhã Nutritivo</h2>
+          <p>O café da manhã é a refeição mais importante do dia escolar. Inclua carboidratos integrais, proteínas e frutas frescas. Crianças bem alimentadas têm mais concentração e desempenho.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://alimentacaosaudavel.org.br/" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i4.jpg" alt="Guia alimentar">
+        </div>
+        <div class="card-body">
+          <h2>Guia Alimentar Brasileiro</h2>
+          <p>A base da alimentação deve ser formada por alimentos in natura. Feijão com arroz, verduras refogadas e frutas são refeições nutritivas, culturalmente ricas e acessíveis para todos.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://www.escolamais.com/alimentacao-saudavel-na-escola-2/" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i5.jpg" alt="Horta escolar">
+        </div>
+        <div class="card-body">
+          <h2>Horta Escolar</h2>
+          <p>Ao plantar, cuidar e colher seus próprios alimentos, as crianças desenvolvem responsabilidade e interesse em comer vegetais. Tomate cereja, alface e manjericão são ótimas opções.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://www.unicef.org/brazil/relatorios/promovendo-um-ambiente-alimentar-escolar-saudavel" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i6.jpg" alt="Agricultura familiar">
+        </div>
+        <div class="card-body">
+          <h2>Agricultura Familiar</h2>
+          <p>A Lei do PNAE garante que 30% dos recursos da merenda sejam usados na compra direta da agricultura familiar, garantindo alimentos mais frescos e apoiando produtores locais.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://brasilescola.uol.com.br/saude-na-escola/alimentacao-saudavel.htm" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i7.jpg" alt="Lanche saudável">
+        </div>
+        <div class="card-body">
+          <h2>Lanche Saudável</h2>
+          <p>Trocar salgadinhos por opções naturais é um grande passo. Frutas, castanhas, iogurte natural e tapioca com queijo são lanches nutritivos e fáceis de preparar.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://idec.org.br/ferramenta/alimentacao-saudavel-nas-escolas" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i8.jpg" alt="Hidratação">
+        </div>
+        <div class="card-body">
+          <h2>Hidratação</h2>
+          <p>A água é essencial para o desempenho escolar. Crianças desidratadas ficam cansadas e com dificuldade de concentração. A recomendação é beber 6 a 8 copos por dia.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+      <a href="https://www.grsa.com.br/blog/alimentacao-saudavel-na-escola/" target="_blank" class="card">
+        <div class="card-img-wrap">
+          <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/i9.jpg" alt="Leguminosas">
+        </div>
+        <div class="card-body">
+          <h2>Leguminosas</h2>
+          <p>Feijão, lentilha, grão-de-bico e ervilha são ricos em proteínas vegetais, fibras e ferro. O feijão com arroz forma uma combinação proteica completa e sustentável.</p>
+          <span class="card-link">Saiba mais →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FORMULÁRIO -->
+  <section class="form-section">
+    <p class="form-title">Participe da nossa pesquisa</p>
+    <p class="form-desc">
+      Convidamos você a contribuir com nossa pesquisa sobre alimentação escolar saudável.<br>
+      <strong>Escaneie o QR Code</strong> com a câmera do seu celular ou <strong>clique na imagem</strong> para acessar o formulário.
+    </p>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=rELrEVYQtECrMIiZSF_-7fc5jjtg9KNDtE1rpdicERRUMVFBVk04UloyT0JJS1pUVTNURTFIQ1JTSi4u&origin=QRCode" target="_blank" class="qr-wrap">
+      <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/qrcode.jpeg" alt="QR Code do formulário">
+    </a>
+  </section>
+
+  <!-- PALETA -->
+  <section class="paleta-section">
+    <p class="paleta-label" id="frase">paleta de cores atual: Horta</p>
+    <button class="btn btn-mudar" onclick="clicou()">mudar paleta</button>
+  </section>
+
+  <footer>
+    Nutri Escola &mdash; Promovendo saúde e aprendizado através da alimentação
+  </footer>
+
+  <script>
+    let paletaAtual = "horta";
+
+    const paletas = {
+      horta: {
+        nome: "Horta",
+        bg: "linear-gradient(160deg, #EAF3DE 0%, #C0DD97 100%)",
+        dark: "#173404", mid: "#27500A", accent: "#639922",
+        cardBg: "#27500A", btnGrad: "linear-gradient(#3B6D11 0%, #173404 100%)",
+        text: "#27500A", highlight: "#639922", cardText: "#cde8a8", cardTitle: "#C0DD97"
+      },
+      floresta: {
+        nome: "Floresta",
+        bg: "linear-gradient(160deg, #E1F5EE 0%, #9FE1CB 100%)",
+        dark: "#04342C", mid: "#0F6E56", accent: "#1D9E75",
+        cardBg: "#085041", btnGrad: "linear-gradient(#1D9E75 0%, #04342C 100%)",
+        text: "#0F6E56", highlight: "#1D9E75", cardText: "#a8e8d0", cardTitle: "#9FE1CB"
+      },
+      terra: {
+        nome: "Terra Fértil",
+        bg: "linear-gradient(160deg, #FAEEDA 0%, #FAC775 100%)",
+        dark: "#412402", mid: "#633806", accent: "#BA7517",
+        cardBg: "#633806", btnGrad: "linear-gradient(#EF9F27 0%, #412402 100%)",
+        text: "#633806", highlight: "#BA7517", cardText: "#fde4b0", cardTitle: "#FAC775"
+      },
+      oceano: {
+        nome: "Oceano",
+        bg: "linear-gradient(160deg, #E6F1FB 0%, #85B7EB 100%)",
+        dark: "#042C53", mid: "#0C447C", accent: "#378ADD",
+        cardBg: "#0C447C", btnGrad: "linear-gradient(#378ADD 0%, #042C53 100%)",
+        text: "#0C447C", highlight: "#378ADD", cardText: "#b3d4f5", cardTitle: "#85B7EB"
+      },
+      savana: {
+        nome: "Savana",
+        bg: "linear-gradient(160deg, #F1EFE8 0%, #D3D1C7 100%)",
+        dark: "#2C2C2A", mid: "#444441", accent: "#888780",
+        cardBg: "#444441", btnGrad: "linear-gradient(#888780 0%, #2C2C2A 100%)",
+        text: "#444441", highlight: "#639922", cardText: "#d8d6ce", cardTitle: "#D3D1C7"
+      },
+      primavera: {
+        nome: "Primavera",
+        bg: "linear-gradient(160deg, #FBEAF0 0%, #F4C0D1 100%)",
+        dark: "#4B1528", mid: "#72243E", accent: "#D4537E",
+        cardBg: "#72243E", btnGrad: "linear-gradient(#D4537E 0%, #4B1528 100%)",
+        text: "#72243E", highlight: "#D4537E", cardText: "#f5c0cf", cardTitle: "#F4C0D1"
+      }
+    };
+
+    const ordem = ["horta","floresta","terra","oceano","savana","primavera"];
+
+    function clicou() {
+      const idx = ordem.indexOf(paletaAtual);
+      paletaAtual = ordem[(idx + 1) % ordem.length];
+      aplicarPaleta(paletas[paletaAtual]);
+    }
+
+    function aplicarPaleta(p) {
+      const r = document.documentElement.style;
+      document.getElementById("frase").textContent = "paleta de cores atual: " + p.nome;
+      document.querySelector("html").style.background = p.bg;
+      r.setProperty("--bg2", ""); // reset
+      document.querySelectorAll(".btn, button").forEach(el => el.style.background = p.btnGrad);
+      document.querySelector("h1").style.color = p.dark;
+      document.querySelector("h1").style.textShadow = "0 6px 28px " + p.accent;
+      document.querySelector(".tagline").style.color = p.mid;
+      document.querySelector(".destaque").style.color = p.highlight;
+      document.querySelectorAll(".intro p, .intro li, .paleta-label, .form-desc").forEach(el => el.style.color = p.mid);
+      document.querySelector(".form-title").style.color = p.dark;
+      document.querySelectorAll(".card").forEach(el => el.style.background = p.cardBg);
+      document.querySelectorAll(".card-body h2").forEach(el => el.style.color = p.cardTitle);
+      document.querySelectorAll(".card-body p").forEach(el => el.style.color = p.cardText);
+      document.querySelectorAll(".card-link").forEach(el => el.style.color = p.cardTitle);
+      document.querySelector("footer").style.color = p.mid;
+    }
+  </script>
+
+</body>
+</html>
