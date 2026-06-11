@@ -14,7 +14,6 @@
       --dark: #173404;
       --mid: #27500A;
       --accent: #639922;
-      --light: #EAF3DE;
       --card-bg: #27500A;
       --btn-grad: linear-gradient(#3B6D11 0%, #173404 100%);
       --text: #27500A;
@@ -42,7 +41,6 @@
     }
 
     .site-header h1 {
-      font-family: arial, sans-serif;
       font-size: clamp(52px, 12vw, 96px);
       color: var(--dark);
       text-shadow: 0 6px 28px var(--accent);
@@ -73,7 +71,6 @@
       border-radius: 100px;
       background: var(--btn-grad);
       color: white;
-      font-family: arial, sans-serif;
       font-size: 15px;
       font-weight: 600;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -124,9 +121,7 @@
       opacity: 0.85;
     }
 
-    .intro ul li::before {
-      content: "🌿 ";
-    }
+    .intro ul li::before { content: "🌿 "; }
 
     /* ── CARDS GRID ── */
     .cards-section {
@@ -141,7 +136,6 @@
       gap: 24px;
     }
 
-    /* Card individual */
     .card {
       background: var(--card-bg);
       border-radius: 20px;
@@ -172,9 +166,7 @@
       transition: transform 0.5s ease;
     }
 
-    .card:hover .card-img-wrap img {
-      transform: scale(1.06);
-    }
+    .card:hover .card-img-wrap img { transform: scale(1.06); }
 
     .card-body {
       padding: 20px 22px 24px;
@@ -184,9 +176,8 @@
     }
 
     .card-body h2 {
-      font-family: arial, sans-serif;
       font-size: clamp(13px, 2vw, 15px);
-      color: var(--bg2);
+      color: #C0DD97;
       margin-bottom: 10px;
       line-height: 1.4;
     }
@@ -205,7 +196,7 @@
       gap: 6px;
       margin-top: 16px;
       font-size: 13px;
-      color: var(--bg2);
+      color: #C0DD97;
       font-weight: 600;
       opacity: 0.8;
       transition: opacity 0.2s;
@@ -216,14 +207,14 @@
     /* ── FORMULÁRIO ── */
     .form-section {
       text-align: center;
-      padding: 20px 20px 60px;
-      max-width: 600px;
+      padding: 20px 28px 50px;
+      max-width: 560px;
       margin: 0 auto;
     }
 
     .form-section .form-title {
-      font-family: arial, sans-serif;
-      font-size: clamp(14px, 2.5vw, 18px);
+      font-size: clamp(16px, 2.5vw, 20px);
+      font-weight: 700;
       color: var(--dark);
       margin-bottom: 14px;
       line-height: 1.6;
@@ -232,21 +223,43 @@
     .form-section .form-desc {
       font-size: clamp(14px, 2vw, 16px);
       color: var(--mid);
-      line-height: 1.7;
-      margin-bottom: 24px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .form-section ul {
+      list-style: none;
+      margin-top: 24px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-section ul li {
+      font-size: clamp(12px, 1.8vw, 13px);
+      color: var(--mid);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    .form-section h2 {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--dark);
+      margin-top: 28px;
     }
 
     .qr-wrap {
       display: inline-block;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .qr-wrap:hover {
       transform: scale(1.05);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.4);
     }
 
     .qr-wrap img {
@@ -283,11 +296,8 @@
       opacity: 0.8;
     }
 
-    /* ── RESPONSIVO MOBILE ── */
     @media (max-width: 480px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
+      .cards-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -297,20 +307,17 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="site-header">
     <h1>Nutri Escola</h1>
     <p class="tagline">Alimentação saudável que forma hábitos para a vida toda</p>
   </header>
 
-  <!-- NAV -->
   <nav class="nav-btns">
     <a href="https://davikskk.github.io/TCC/index.html" class="btn">Saiba mais</a>
     <a href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/programas/pnae" class="btn" target="_blank">PNAE</a>
     <a href="https://www.embrapa.br/alimentacao-saudavel" class="btn" target="_blank">Embrapa</a>
   </nav>
 
-  <!-- INTRO -->
   <section class="intro">
     <span class="destaque">"Alimentar bem é plantar o futuro."</span>
     <p>Inspire-se com nossas dicas e descubra como pequenas escolhas alimentares fazem grande diferença no aprendizado.</p>
@@ -321,7 +328,6 @@
     </ul>
   </section>
 
-  <!-- CARDS -->
   <main class="cards-section">
     <div class="cards-grid">
 
@@ -427,7 +433,7 @@
     </div>
   </main>
 
-  <!-- FORMULÁRIO -->
+  <!-- FORMULÁRIO — fundo escuro fixo, nunca afetado pela paleta -->
   <section class="form-section">
     <p class="form-title">Participe da nossa pesquisa</p>
     <p class="form-desc">
@@ -435,22 +441,21 @@
       <strong>Escaneie o QR Code</strong> com a câmera do seu celular ou <strong>clique na imagem</strong> para acessar o formulário.
     </p>
     <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=rELrEVYQtECrMIiZSF_-7fc5jjtg9KNDtE1rpdicERRUMVFBVk04UloyT0JJS1pUVTNURTFIQ1JTSi4u&origin=QRCode" target="_blank" class="qr-wrap">
-      <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/qrcode.jpeg" alt="QR Code do formulário"><br>
+      <img src="https://raw.githubusercontent.com/davikskk/TCC/refs/heads/main/imgs/qrcode.jpeg" alt="QR Code do formulário">
     </a>
-    <h2>links de imagens utilizados:</h2><br>
+    <h2>Links de imagens utilizados:</h2>
     <ul>
-      <li>https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80</li><br>
-      <li>https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80</li><br>
+      <li>https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80</li>
+      <li>https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80</li>
     </ul>
   </section>
 
-  <!-- PALETA -->
   <section class="paleta-section">
     <p class="paleta-label" id="frase">paleta de cores atual: Horta</p>
     <button class="btn btn-mudar" onclick="clicou()">mudar paleta</button>
@@ -469,42 +474,42 @@
         bg: "linear-gradient(160deg, #EAF3DE 0%, #C0DD97 100%)",
         dark: "#173404", mid: "#27500A", accent: "#639922",
         cardBg: "#27500A", btnGrad: "linear-gradient(#3B6D11 0%, #173404 100%)",
-        text: "#27500A", highlight: "#639922", cardText: "#cde8a8", cardTitle: "#C0DD97"
+        highlight: "#639922", cardText: "#cde8a8", cardTitle: "#C0DD97"
       },
       floresta: {
         nome: "Floresta",
         bg: "linear-gradient(160deg, #E1F5EE 0%, #9FE1CB 100%)",
         dark: "#04342C", mid: "#0F6E56", accent: "#1D9E75",
         cardBg: "#085041", btnGrad: "linear-gradient(#1D9E75 0%, #04342C 100%)",
-        text: "#0F6E56", highlight: "#1D9E75", cardText: "#a8e8d0", cardTitle: "#9FE1CB"
+        highlight: "#1D9E75", cardText: "#a8e8d0", cardTitle: "#9FE1CB"
       },
       terra: {
         nome: "Terra Fértil",
         bg: "linear-gradient(160deg, #FAEEDA 0%, #FAC775 100%)",
         dark: "#412402", mid: "#633806", accent: "#BA7517",
         cardBg: "#633806", btnGrad: "linear-gradient(#EF9F27 0%, #412402 100%)",
-        text: "#633806", highlight: "#BA7517", cardText: "#fde4b0", cardTitle: "#FAC775"
+        highlight: "#BA7517", cardText: "#fde4b0", cardTitle: "#FAC775"
       },
       oceano: {
         nome: "Oceano",
         bg: "linear-gradient(160deg, #E6F1FB 0%, #85B7EB 100%)",
         dark: "#042C53", mid: "#0C447C", accent: "#378ADD",
         cardBg: "#0C447C", btnGrad: "linear-gradient(#378ADD 0%, #042C53 100%)",
-        text: "#0C447C", highlight: "#378ADD", cardText: "#b3d4f5", cardTitle: "#85B7EB"
+        highlight: "#378ADD", cardText: "#b3d4f5", cardTitle: "#85B7EB"
       },
       savana: {
         nome: "Savana",
         bg: "linear-gradient(160deg, #F1EFE8 0%, #D3D1C7 100%)",
         dark: "#2C2C2A", mid: "#444441", accent: "#888780",
         cardBg: "#444441", btnGrad: "linear-gradient(#888780 0%, #2C2C2A 100%)",
-        text: "#444441", highlight: "#639922", cardText: "#d8d6ce", cardTitle: "#D3D1C7"
+        highlight: "#639922", cardText: "#d8d6ce", cardTitle: "#D3D1C7"
       },
       primavera: {
         nome: "Primavera",
         bg: "linear-gradient(160deg, #FBEAF0 0%, #F4C0D1 100%)",
         dark: "#4B1528", mid: "#72243E", accent: "#D4537E",
         cardBg: "#72243E", btnGrad: "linear-gradient(#D4537E 0%, #4B1528 100%)",
-        text: "#72243E", highlight: "#D4537E", cardText: "#f5c0cf", cardTitle: "#F4C0D1"
+        highlight: "#D4537E", cardText: "#f5c0cf", cardTitle: "#F4C0D1"
       }
     };
 
@@ -517,22 +522,22 @@
     }
 
     function aplicarPaleta(p) {
-      const r = document.documentElement.style;
       document.getElementById("frase").textContent = "paleta de cores atual: " + p.nome;
       document.querySelector("html").style.background = p.bg;
-      r.setProperty("--bg2", ""); // reset
       document.querySelectorAll(".btn, button").forEach(el => el.style.background = p.btnGrad);
       document.querySelector("h1").style.color = p.dark;
       document.querySelector("h1").style.textShadow = "0 6px 28px " + p.accent;
       document.querySelector(".tagline").style.color = p.mid;
       document.querySelector(".destaque").style.color = p.highlight;
-      document.querySelectorAll(".intro p, .intro li, .paleta-label, .form-desc").forEach(el => el.style.color = p.mid);
+      document.querySelectorAll(".intro p, .intro li, .paleta-label, .form-desc, .form-section ul li").forEach(el => el.style.color = p.mid);
       document.querySelector(".form-title").style.color = p.dark;
+      document.querySelector(".form-section h2").style.color = p.dark;
       document.querySelectorAll(".card").forEach(el => el.style.background = p.cardBg);
       document.querySelectorAll(".card-body h2").forEach(el => el.style.color = p.cardTitle);
       document.querySelectorAll(".card-body p").forEach(el => el.style.color = p.cardText);
       document.querySelectorAll(".card-link").forEach(el => el.style.color = p.cardTitle);
       document.querySelector("footer").style.color = p.mid;
+      // .form-section NÃO é tocada aqui — cores fixas no CSS
     }
   </script>
 
