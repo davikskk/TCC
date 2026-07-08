@@ -35,25 +35,26 @@
       font-style: arial, sans-serif;
     }
 
-    .voltar {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 20px 40px;
-      padding: 10px 24px;
-      border-radius: 100px;
-      background: linear-gradient(#3B6D11 0%, #173404 100%);
-      color: white;
-      font-family: arial, sans-serif;
-      font-size: 15px;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.voltar {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px;
+  padding: 10px 24px;
+  border-radius: 100px;
+  background: linear-gradient(#3B6D11 0%, #173404 100%);
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .voltar:hover {
-      transform: scale(1.07);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
+.voltar:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
 
     .secao {
       max-width: 860px;
@@ -262,10 +263,66 @@
       border-top: 1px solid #97C459;
     }
 
-    .pilares {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    /* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 1000px) {
+
+  header h1 {
+    font-size: 54px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pilares {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grupos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 40px 20px 20px;
+  }
+
+  header h1 {
+    font-size: 42px;
+  }
+
+  header p.sub {
+    font-size: 16px;
+  }
+
+  .secao {
+    padding: 20px;
+  }
+
+  .secao-titulo {
+    font-size: 20px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .pilares {
+    grid-template-columns: 1fr;
+  }
+
+  .grupos {
+    grid-template-columns: 1fr;
+  }
+
+  .voltar {
+    display: inline-flex;
+  }
 }
   </style>
 </head>
